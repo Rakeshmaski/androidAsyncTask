@@ -1,0 +1,108 @@
+package com.qurater.csr.adapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.graphics.Typeface;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.qurater.csr.ProjectListActivity;
+import com.qurater.csr.R;
+import com.qurater.csr.api.Font;
+import com.qurater.csr.api.Project;
+
+public class ProjectAdapter extends BaseAdapter{
+	 protected List<Project> projects;
+     protected ProjectListActivity activity;
+
+     public ProjectAdapter(ProjectListActivity activity) {
+         this.activity = activity;
+     }
+    @Override
+     public int getCount() {
+    	 System.out.println("In ProjectAdapter getCount");
+        return (projects != null)? projects.size(): 0;
+     }
+
+     @Override
+     public Object getItem(int position) {
+    	 System.out.println("In ProjectAdapter getItem");
+        return (projects != null)? projects.get(position): null;
+     }
+
+     @Override
+     public long getItemId(int position) {
+        return position;
+     }
+
+     public Activity getActivity() {
+         return this.activity;
+     }
+     
+     @Override
+     public View getView(int position, View convertView,
+           ViewGroup parent) {                                           
+        View layout;
+        if (convertView == null) {
+      	  layout = getActivity().getLayoutInflater().inflate(
+                    R.layout.one_project, 
+                    parent, 
+                    false);
+        } else {
+      	  layout = (RelativeLayout) convertView;
+        }
+        
+        final Project project = projects.get(position); 
+        
+       Typeface typefaceLatoLight = Font.getFont(getActivity().getApplicationContext(), "Lato-Regular.ttf");
+       Typeface typefaceDroidSerifBoldItalic = Font.getFont(getActivity().getApplicationContext(), "DroidSerif-BoldItalic.ttf");
+       //Typeface typefaceDroidSerif = Font.getFont(getActivity().getApplicationContext(), "DroidSerif.ttf");
+
+        layout.setOnClickListener(new View.OnClickListener() {
+      	  @Override
+      	  public void onClick(View v) {
+      	      // TODO Auto-generated method stub
+      		  
+      		 /* Activity activity = getActivity();
+      		  Intent intent = new Intent(getActivity(), ProjectDetailActivity.class);
+                intent.putExtra("com.qurater.csr.project.status", project.getStatus());
+                activity.startActivity(intent);
+                activity.overridePendingTransition(R.anim.slide_left_detail, R.anim.stay_in_place_detail);*/
+			  }
+		  });
+        TextView tv = (TextView)layout.findViewById(R.id.status);
+        tv.setTypeface(typefaceDroidSerifBoldItalic, Typeface.ITALIC);
+        String status = project.getStatus();
+        tv.setText(status + " " + " STATUS ");
+        
+       
+        
+        
+        return layout;
+        
+     }
+
+     public void clear() {
+         projects.clear();
+         notifyDataSetChanged();
+     }
+     
+     public void update(List<Project> p) {
+    	 System.out.println("in ProjectAdapter : update method");
+  	     p = (p == null)? new ArrayList<Project>(): p; 
+         if (this.projects != null) {    
+        	 System.out.println("projects not null");
+      	     this.projects.addAll(p);
+         } else {
+        	 System.out.println("projects null:null");
+      	   this.projects = p;
+         }
+         notifyDataSetChanged();
+     }
+
+}

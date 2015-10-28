@@ -1,0 +1,68 @@
+package com.qurater.csr.rest;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.qurater.csr.R;
+import com.qurater.csr.adapter.ProjectAdapter;
+import com.qurater.csr.api.Project;
+import com.qurater.csr.api.URLMap;
+import com.qurater.csr.interfaces.IProjectConsumer;
+
+//import net.sf.json.JSONObject;
+
+public class ProjectsApi implements IDataSink {
+
+	private IProjectConsumer activity;
+
+	/**
+	 * Constructor
+	 */
+	public ProjectsApi(IProjectConsumer activity) {
+		this.activity = activity;
+	}
+
+	/**
+	 * Login
+	 */
+	public void getProjects() {
+		System.out.println("in ProjectsApi class: getProjects method");
+		String url = URLMap.getAutoAppUrl("projects_url");
+		System.out.println("The Url is:" + url);
+		RemoteDataFetcher.get(url, activity.getApplicationContext(), this);
+	}
+
+	@Override
+	public void receive(String response) {
+
+		try {
+			System.out.println("In ProjectsApi : receive method");
+			System.err.println(response);
+
+			List<Project> projects = new ArrayList<Project>();
+			JSONArray jProjects = new JSONObject(response).getJSONArray("tickets");
+			// JSONArray jProjects = new JSONArray("response");
+			for (int i = 0; i < jProjects.length(); i++) {
+				projects.add(Project.fromJson(jProjects.getJSONObject(i)));
+
+			}
+
+			activity.onProjectsLoadSuccess(projects);
+
+		}
+
+		catch (Exception e) {
+			activity.onProjectsLoadFailure(activity.getApplicationContext().getResources()
+					.getString(R.string.title_activity_project_list));
+		}
+	}
+
+	@Override
+	public void error(Throwable e, String response) {
+		activity.onProjectsLoadFailure(activity.getApplicationContext().getResources()
+				.getString(R.string.title_activity_project_list));
+	}
+}

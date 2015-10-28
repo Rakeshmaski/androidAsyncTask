@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="top" >
+
+    <RelativeLayout
+        android:id="@+id/c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp" >
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Status"
+            android:textColor="@color/orange"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/status"
+            android:layout_below="@+id/status"
+            android:paddingTop="3dp"
+            android:text="@string/id"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/assignedto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status"
+            android:layout_toRightOf="@+id/id"
+            android:paddingTop="3dp"
+            android:paddingLeft="8dp"
+            android:text="Assigned To"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/create_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id"
+            android:paddingTop="3dp"
+            android:text="@string/createDate"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/create_date"
+            android:paddingTop="3dp"
+            android:text="priority"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/ticketType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/create_date"
+            android:layout_toRightOf="@+id/priority"
+            android:paddingLeft="8dp"
+            android:paddingTop="3dp"
+            android:text="Ticket type"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:typeface="serif" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/c"
+        android:background="@color/black" />
+
+</RelativeLayout>

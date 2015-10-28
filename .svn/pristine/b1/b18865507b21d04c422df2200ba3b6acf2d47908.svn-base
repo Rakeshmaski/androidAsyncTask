@@ -1,0 +1,28 @@
+package com.qurater.csr.activity;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ImageView;
+
+public class SaveTicketDetails extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_ticket_save);
+		ImageView imageView = (ImageView) findViewById(R.id.saveticket);
+		imageView.setImageResource(R.drawable.save);
+		imageView.getLayoutParams().height = 85;
+		imageView.getLayoutParams().width = 85;
+
+		imageView = (ImageView) findViewById(R.id.addnote);
+		imageView.setImageResource(R.drawable.addnotes);
+		imageView.getLayoutParams().height = 85;
+		imageView.getLayoutParams().width = 85;
+
+		imageView = (ImageView) findViewById(R.id.delete);
+		imageView.setImageResource(R.drawable.delete);
+		imageView.getLayoutParams().height = 85;
+		imageView.getLayoutParams().width = 85;
+	}
+}

@@ -1,0 +1,145 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp" >
+
+    <TextView
+        android:id="@+id/ticketInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TicketDetail Info"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/orange"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/fromUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ticketInfo"
+        android:paddingTop="2dp"
+        android:text="From User"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+    <TextView
+        android:id="@+id/priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ticketInfo"
+        android:paddingTop="2dp"
+        android:layout_toRightOf="@+id/fromUser"
+        android:paddingLeft="10dp"
+        android:text="Priority"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+    <TextView
+        android:id="@+id/ticketType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ticketInfo"
+        android:paddingTop="2dp"
+        android:layout_toRightOf="@+id/priority"
+        android:paddingLeft="10dp"
+        android:text="TicketType"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+    <TextView
+        android:id="@+id/category1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fromUser"
+        android:paddingTop="2dp"
+        android:text="category1"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+    <TextView
+        android:id="@+id/category2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fromUser"
+        android:layout_toRightOf="@+id/category1"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:text="category2"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+    <TextView
+        android:id="@+id/sentiment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fromUser"
+        android:layout_toRightOf="@+id/category2"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:text="Sentiment"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+    <TextView
+        android:id="@+id/category3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/category1"
+        android:paddingTop="2dp"
+        android:text="category3"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+    <TextView
+        android:id="@+id/category4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/category2"
+        android:layout_toRightOf="@+id/category3"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:text="category4"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+    <TextView
+        android:id="@+id/origId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sentiment"
+        android:layout_toRightOf="@+id/category4"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:text="OrigId"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+    <TextView
+        android:id="@+id/ticketText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/category4"
+        android:paddingTop="2dp"
+        android:text="Text"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:typeface="serif" />
+    
+
+</RelativeLayout>
+</RelativeLayout>

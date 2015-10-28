@@ -1,0 +1,20 @@
+package com.qurater.csr.interfaces;
+
+import java.util.List;
+
+import com.qurater.csr.api.Project;
+
+import android.content.Context;
+
+public interface IProjectConsumer {
+
+	
+	public void onProjectsLoadFailure(String reason);
+	
+	/**
+	 * Application Context
+	 */
+	public Context getApplicationContext();
+
+	void onProjectsLoadSuccess(List<Project> project);
+}

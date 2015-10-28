@@ -1,0 +1,17 @@
+package com.qurater.sample.api;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class URLMap {
+	public static String QURATER_BASE_URL = "http://smartphones.quraterapps.com/a";
+	public static Map<String, String> m_urls = new HashMap<String, String>();
+	static {
+		m_urls.put("login_url", "/login_oodja_user.do?email={email_id}&password={password}&o={ot}");
+	}
+	
+	public static String getUrl(String key) {
+		return QURATER_BASE_URL + m_urls.get(key);
+	}
+
+}

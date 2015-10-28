@@ -1,0 +1,180 @@
+package com.qurater.csr.api;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class Ticket {
+
+	public String getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(String deleted) {
+		this.deleted = deleted;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public long getAssignedTo() {
+		return assignedTo;
+	}
+
+	public void setAssignedTo(long assignedTo) {
+		this.assignedTo = assignedTo;
+	}
+
+	public String getAssignedToRep() {
+		return assignedToRep;
+	}
+
+	public void setAssignedToRep(String assignedToRep) {
+		this.assignedToRep = assignedToRep;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getHistory() {
+		return history;
+	}
+
+	public void setHistory(String history) {
+		this.history = history;
+	}
+
+	public String getObjectType() {
+		return objectType;
+	}
+
+	public void setObjectType(String objectType) {
+		this.objectType = objectType;
+	}
+
+	public String getChannelRecordId() {
+		return channelRecordId;
+	}
+
+	public void setChannelRecordId(String channelRecordId) {
+		this.channelRecordId = channelRecordId;
+	}
+
+	public String getChannelRecord() {
+		return channelRecord;
+	}
+
+	public void setChannelRecord(String channelRecord) {
+		this.channelRecord = channelRecord;
+	}
+
+	private String updateDate;
+	private String deleted;
+	private String createdBy;
+	private String customerId;
+	private String updatedBy;
+	private long assignedTo;
+	private String assignedToRep;
+	private String status;
+	private String history;
+	private String objectType;
+	private String channelRecordId;
+	private String channelRecord;
+	private String id;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	private String createDate;
+	private BaseRecord baseRecords;
+
+	public BaseRecord getBaseRecords() {
+		return baseRecords;
+	}
+
+	public void setBaseRecords(BaseRecord baseRecords) {
+		this.baseRecords = baseRecords;
+	}
+
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
+
+
+	public static Ticket fromJson(JSONObject json) throws JSONException {
+		System.out.println("In Project : fromJson method");
+		Ticket p = new Ticket();
+
+		p.setCreateDate(json.getString("createDate"));
+		System.out.println("createDate=" + json.getString("createDate"));
+
+		p.setUpdateDate(json.getString("updateDate"));
+		System.out.println("updateDate=" + json.getString("updateDate"));
+
+		p.setId(json.getString("id"));
+		System.out.println("id=" + json.getLong("id"));
+
+		p.setStatus(json.getString("status"));
+		System.out.println("status=" + json.getString("status"));
+
+		p.setAssignedTo(json.getLong("assignedTo"));
+		System.out.println("assignedTo=" + json.getLong("assignedTo"));
+
+		p.setChannelRecordId(json.getString("channelRecordId"));
+		System.out.println("channelRecordId=" + json.getString("channelRecordId"));
+
+		/*if (json.has("baseRecord")) {
+			JSONObject baseRecord = json.getJSONObject("baseRecord");
+			BaseRecord b = BaseRecord.fromJson(baseRecord);
+			p.setBaseRecords(b);
+
+		}
+
+		else {
+			System.out.println("base is string ");
+		}*/
+		return p;
+	}
+
+}

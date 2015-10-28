@@ -1,0 +1,54 @@
+package com.qurater.csr;
+
+import java.util.List;
+
+import android.app.Activity;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.qurater.csr.adapter.ProjectAdapter;
+import com.qurater.csr.api.Font;
+import com.qurater.csr.api.Project;
+import com.qurater.csr.interfaces.IProjectConsumer;
+import com.qurater.csr.rest.ProjectsApi;
+
+public class ProjectListActivity extends Activity implements IProjectConsumer{
+	protected ProjectAdapter adapter;
+	TextView content;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_project);
+		ListView projects= (ListView) findViewById(R.id.projects);
+		
+	    Typeface typefaceLatoBold = Font.getFont(getApplicationContext(), "Lato-Bold.ttf");
+	    TextView tvTitle = (TextView) findViewById(R.id.title);
+	    tvTitle.setTypeface(typefaceLatoBold);
+	    tvTitle.setText(getResources().getString(R.string.my_projects));
+
+		adapter=new ProjectAdapter(this);
+		projects.setAdapter(adapter);
+		ProjectsApi api=new ProjectsApi(this);
+		api.getProjects();
+		
+	}
+   // getActionBar().hide();
+	
+	@Override
+	public void onProjectsLoadSuccess(List<Project> projects) {
+		System.out.println("In onProjectsLoadSuccess");
+		adapter.update(projects);
+	}
+
+	@Override
+	public void onProjectsLoadFailure(String reason) {
+		System.out.println("in onProjectsLoadFailure");
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

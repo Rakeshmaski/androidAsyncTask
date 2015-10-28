@@ -1,0 +1,168 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F5F5DC" >
+
+    <RelativeLayout
+        android:id="@+id/c"
+        android:layout_width="175dp"
+        android:layout_height="250dp" >
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#fff" />
+
+        <TextView
+            android:id="@+id/baseRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="baseRecord Info"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/orange"
+            android:textSize="22sp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/fromUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/baseRecord"
+            android:paddingTop="3dp"
+            android:text="FromUserName"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/fromUserId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/fromUserName"
+            android:layout_below="@+id/baseRecord"
+            android:layout_toRightOf="@+id/fromUserName"
+            android:paddingLeft="5dp"
+            android:paddingTop="3dp"
+            android:text="fromUserId"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/sentiment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fromUserName"
+            android:text="sentiment"
+            android:paddingTop="3dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fromUserId"
+            android:layout_toRightOf="@+id/sentiment"
+            android:paddingLeft="15dp"
+            android:paddingTop="3dp"
+            android:text="id"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/category1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sentiment"
+            android:paddingTop="3dp"
+            android:text="category1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/category1"
+            android:paddingTop="3dp"
+            android:text="message"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/facebookPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/message"
+            android:paddingTop="3dp"
+            android:text="facebook Post"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/orange"
+            android:textSize="22sp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+        <ImageView
+            android:id="@+id/icon_fb"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/message"
+            android:layout_toRightOf="@+id/facebookPost"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/organization"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/facebookPost"
+            android:paddingTop="3dp"
+            android:text="organization"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/fb_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/organization"
+            android:paddingTop="3dp"
+            android:text="message"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:typeface="serif" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_alignBottom="@+id/c"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/c"
+        android:layout_toRightOf="@+id/c" >
+
+        <ProgressBar
+        android:id="@+id/progress1"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible"
+    />
+        
+        <ImageView
+            android:id="@+id/icon_attachment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_launcher" />
+    </RelativeLayout>
+
+</RelativeLayout>

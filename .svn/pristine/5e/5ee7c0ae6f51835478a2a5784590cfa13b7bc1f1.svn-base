@@ -1,0 +1,70 @@
+package com.qurater.csr.rest;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONObject;
+
+import com.qurater.csr.activity.AddNoteActivity;
+import com.qurater.csr.activity.R;
+import com.qurater.csr.api.BaseRecord;
+import com.qurater.csr.api.URLMap;
+import com.qurater.csr.interfaces.IBaseRecordConsumer;
+
+public class BaseRecordsApi implements IDataSink {
+	private IBaseRecordConsumer activity;
+
+	public BaseRecordsApi(IBaseRecordConsumer activity) {
+		super();
+		this.activity = activity;
+	}
+
+	public BaseRecordsApi(AddNoteActivity saveTicketDetails) {
+	}
+
+	public void getTickets(String id) {
+		String url = URLMap.getTicketsUrl("tickets_url");
+		url = url.replace("{id}", id);
+		System.out.println("The Url is:" + url);
+		RemoteDataFetcher.get(url, activity.getApplicationContext(), this);
+	}
+
+	@Override
+	public void receive(String response) {
+
+		try {
+			System.out.println("In BaseRecordsApi : receive method");
+			System.err.println(response);
+
+			List<BaseRecord> baseRecords = new ArrayList<BaseRecord>();
+			JSONObject jbaseRecords = new JSONObject(response).getJSONObject("ticket");
+			try {
+				if (jbaseRecords.isNull("baseRecord")) {
+					System.out.println("BaseRecord is Null");
+				} else {
+					baseRecords.add(BaseRecord.fromJson(jbaseRecords.getJSONObject("baseRecord")));
+				}
+
+			} catch (Exception e) {
+			}
+
+			activity.onBaseRecordLoadSuccess(baseRecords);
+
+		}
+
+		catch (Exception e) {
+			System.out.println("BaseRecordApi : TicketLoadFailure");
+			activity.onTicketsLoadFailure(activity.getApplicationContext().getResources()
+					.getString(R.string.title_activity_ticket_list));
+		}
+
+	}
+
+	@Override
+	public void error(Throwable e, String response) {
+		activity.onTicketsLoadFailure(activity.getApplicationContext().getResources()
+				.getString(R.string.title_activity_ticket_list));
+
+	}
+
+}

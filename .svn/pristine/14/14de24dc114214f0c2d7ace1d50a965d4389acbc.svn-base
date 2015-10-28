@@ -1,0 +1,52 @@
+package com.qurater.csr.activity;
+
+import java.util.List;
+
+import android.app.Activity;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.view.Window;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.qurater.csr.adapter.BaseRecordAdapter;
+import com.qurater.csr.api.BaseRecord;
+import com.qurater.csr.api.Font;
+import com.qurater.csr.interfaces.IBaseRecordConsumer;
+import com.qurater.csr.rest.BaseRecordsApi;
+
+public class TicketDetailActivity extends Activity implements IBaseRecordConsumer {
+	protected BaseRecordAdapter adapter;
+	TextView content;
+	protected String subActivity;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+		setContentView(R.layout.activity_ticket_detail);
+		ListView baseRecords = (ListView) findViewById(R.id.ticket_details);
+
+		Typeface typefaceLatoBold = Font.getFont(getApplicationContext(), "Lato-Bold.ttf");
+		TextView tvTitle = (TextView) findViewById(R.id.title);
+		tvTitle.setTypeface(typefaceLatoBold);
+		tvTitle.setText(getResources().getString(R.string.my_ticket_details));
+		Bundle extras = getIntent().getExtras();
+		this.subActivity = (extras != null) ? (extras.getString("com.qurater.csr.project.id")) : null;
+		adapter = new BaseRecordAdapter(this);
+		baseRecords.setAdapter(adapter);
+		BaseRecordsApi api = new BaseRecordsApi(this);
+		api.getTickets(subActivity);
+	}
+
+	@Override
+	public void onTicketsLoadFailure(String reason) {
+
+	}
+
+	@Override
+	public void onTicketsLoadSuccess(List<BaseRecord> baseRecords) {
+		adapter.update(baseRecords);
+	}
+
+}

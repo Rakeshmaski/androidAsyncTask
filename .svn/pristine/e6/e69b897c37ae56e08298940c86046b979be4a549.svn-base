@@ -1,0 +1,75 @@
+package com.qurater.csr.api;
+
+public class BaseRecord {
+	private String createDate;
+	private String updateDate;
+	private boolean deleted;
+	private long id;
+	private long authorId;
+	private String authorScreenName;
+	private String authorName;
+	private String authorIconUrl;
+	private String text;
+	private String tweetString;
+	public String getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+	public String getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
+	public boolean isDeleted() {
+		return deleted;
+	}
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public long getAuthorId() {
+		return authorId;
+	}
+	public void setAuthorId(long authorId) {
+		this.authorId = authorId;
+	}
+	public String getAuthorScreenName() {
+		return authorScreenName;
+	}
+	public void setAuthorScreenName(String authorScreenName) {
+		this.authorScreenName = authorScreenName;
+	}
+	public String getAuthorName() {
+		return authorName;
+	}
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+	public String getAuthorIconUrl() {
+		return authorIconUrl;
+	}
+	public void setAuthorIconUrl(String authorIconUrl) {
+		this.authorIconUrl = authorIconUrl;
+	}
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+	public String getTweetString() {
+		return tweetString;
+	}
+	public void setTweetString(String tweetString) {
+		this.tweetString = tweetString;
+	}
+
+}

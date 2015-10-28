@@ -1,0 +1,76 @@
+package com.qurater.csr.rest;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.qurater.csr.activity.R;
+import com.qurater.csr.api.Ticket;
+import com.qurater.csr.api.URLMap;
+import com.qurater.csr.interfaces.ITicketConsumer;
+
+public class TicketsApi implements IDataSink {
+
+	private ITicketConsumer activity;
+
+	/**
+	 * Constructor
+	 */
+	public TicketsApi(ITicketConsumer activity) {
+		this.activity = activity;
+	}
+	
+	public TicketsApi(){
+		
+	}
+
+	/**
+	 * Login
+	 */
+	public void getTickets() {
+		String url = URLMap.getAutoAppUrl("projects_url");
+		RemoteDataFetcher.get(url, activity.getApplicationContext(), this);
+	}
+	
+	public void getTicketDetails(String id){
+		System.out.println("ticket id="+id);
+		String url = URLMap.getTicketsUrl("tickets_url");
+		RemoteDataFetcher.get(url, activity.getApplicationContext(), this);
+		
+	}
+
+	@Override
+	public void receive(String response) {
+
+		try {
+			System.err.println(response);
+
+			List<Ticket> tickets = new ArrayList<Ticket>();
+			JSONArray jTickets = new JSONObject(response).getJSONArray("tickets");
+			for (int i = 0; i < jTickets.length() ; i++) {
+				try {
+					tickets.add(Ticket.fromJson(jTickets.getJSONObject(i)));
+				} catch (Exception e) {
+					continue;
+				}
+
+			}
+
+			activity.onTicketsLoadSuccess(tickets);
+
+		}
+
+		catch (Exception e) {
+			activity.onTicketsLoadFailure(activity.getApplicationContext().getResources()
+					.getString(R.string.title_activity_ticket_list));
+		}
+	}
+
+	@Override
+	public void error(Throwable e, String response) {
+		activity.onTicketsLoadFailure(activity.getApplicationContext().getResources()
+				.getString(R.string.title_activity_ticket_list));
+	}
+}
